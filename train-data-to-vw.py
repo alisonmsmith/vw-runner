@@ -10,7 +10,11 @@ TRAINING_EXAMPLES = int(sys.argv[1])
 # naming scheme
 NAME_SCHEME = sys.argv[2]
 
+# whether or not to randomize the data
+RANDOMIZE = sys.argv[3]
+
 # character length cutoff
+# TODO: make this a sys variable with a default value
 LENGTH_CUTOFF = 100
 
 # open the training set
@@ -36,7 +40,10 @@ with open('./' + NAME_SCHEME + '/train.vw', 'w') as vw_train_data:
     if TRAINING_EXAMPLES == -1 or TRAINING_EXAMPLES > len(train_set):
         print('using all training examples', len(train_set))
         TRAINING_EXAMPLES = len(train_set)
-    sampling = random.choices(train_set, k=TRAINING_EXAMPLES)
+    if RANDOMIZE == 'true':
+        sampling = random.choices(train_set, k=TRAINING_EXAMPLES)
+    else:
+        sampling = train_set[0:TRAINING_EXAMPLES]
     for s in sampling:
         vw_train_data.write(s[0] + ' |text ' + s[1] + '\n')
         train_labels.append(s[0])

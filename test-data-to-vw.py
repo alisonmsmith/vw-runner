@@ -9,6 +9,7 @@ import sys
 NAME_SCHEME = sys.argv[1]
 
 # character length cutoff
+# TODO: make this a sys variable with a default value
 LENGTH_CUTOFF = 100
 
 # convert the test set to vw format
