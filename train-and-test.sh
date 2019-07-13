@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # folder for your train and test results
-NAME_SCHEME="congress-model-all"
+NAME_SCHEME="data/congress-model-all"
 
 # number of passes to take over the data
 NUM_PASSES=100
@@ -21,16 +21,16 @@ NUM_TRAIN=-1
 # whether to build the test and train sets and train the model (set to false if you've previously trained the model, variable only used if not running incremental)
 TRAIN_MODEL=true
 
-if [ $INCREMENTAL ] ; then
+if [ "$INCREMENTAL" = true ] ; then
   # generate data files
   echo "\n---generating data files for incremental training---\n"
-  python3 incremental-data-to-vw.py $NAME_SCHEME
+  #python3 incremental-data-to-vw.py $NAME_SCHEME
 
   # incrementally train the model, test, and provide accuracy
 
 else
 
-  if [ $TRAIN_MODEL ] ; then
+  if [ "$TRAIN_MODEL" = true ] ; then
     # create directory to store training data, models, and results
     mkdir -p -- "$NAME_SCHEME"
 
