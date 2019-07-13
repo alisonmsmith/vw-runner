@@ -14,3 +14,11 @@ change params in the train-and-test.sh file to specify output directory, number 
 # congress data preprocessing
 
 the python scripts train-data-to-vw.py and test-data-to-vw.py remove speeches where the speaker is independent (I), speeches shorter than 100 characters, and all punctuation from the speeches.
+
+# incremental testing
+
+by setting $INCREMENTAL to true in train-and-test.sh, you can perform incremental training of the dataset broken into 50 training label chunks; there's certainly a better way to do it,  but the script works by creating training data for 50 labels, 100 labels, 150 labels and so on up until the full training data size. Then, for each input size, we train a model, test on the full test set, and compute the accuracy. The result is accuracies.txt which contains the mapping of number of training samples to accuracy. You can use this output to create a chart showing the how model accuracy changes as the learner encounters more training input.
+
+# randomizing the training input
+
+use the $RANDOMIZE variable in train-and-test.sh to specify whether or not to randomize the training input. vw runs online, so order is important. setting $RANDOMIZE to false, means vw will learn a consistent model each time, but this model might not be optimal.  

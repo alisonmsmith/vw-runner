@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # folder for your train and test results
-NAME_SCHEME="results/incremental-logistic-bigram"
+NAME_SCHEME="results/logistic-unigram"
 
 # number of passes to take over the data
 NUM_PASSES=1
@@ -10,10 +10,10 @@ NUM_PASSES=1
 LOSS_FUNCTION="logistic"
 
 # ngrams
-NGRAM=2
+NGRAM=1
 
 # whether to run an incremental test to see how the system performs as more data is ingested; if you run incremental, NUM_TRAIN and TRAIN_MODEL variables are ignored
-INCREMENTAL=true
+INCREMENTAL=false
 
 # whether to randomize the training data or select from the set as ordered
 # as vw trains online, order is important (use RANDOMIZE=false to get a consistent, although possibly not optimal, model)
@@ -43,7 +43,7 @@ if [ "$INCREMENTAL" = true ] ; then
   FILES="$NAME_SCHEME/incremental/*"
   for f in $FILES
   do
-    echo "processing $f file"
+    echo "processing $f"
     echo $f >> "$NAME_SCHEME/accuracies.txt"
     # run vw training
     #echo "\n---training model---\n"
