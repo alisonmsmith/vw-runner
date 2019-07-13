@@ -1,5 +1,5 @@
 # vw-runner
-simple scripts to run vowpal wabbit and compute accuracy 
+simple scripts to run vowpal wabbit and compute accuracy
 
 currently includes convote http://www.cs.cornell.edu/home/llee/data/convote.html dataset (debate speeches from 2005 congressional record)
 
@@ -13,4 +13,4 @@ change params in the train-and-test.sh file to specify output directory, number 
 
 # congress data preprocessing
 
-train-data-to-vw.py and test-data-to-vw.py remove speeches where the speaker is independent (I), speeches shorter than 100 characters, and all punctuation from the speeches.
+the python scripts train-data-to-vw.py and test-data-to-vw.py remove speeches where the speaker is independent (I), speeches shorter than 100 characters, and all punctuation from the speeches.
