@@ -3,7 +3,7 @@
 # folder for your train and test results
 NAME_SCHEME="results/logistic-unigram"
 
-# number of passes to take over the data
+# number of passes to take over the data (currently this only applies to non-incremental testing, because of how caching is handled and the less than optimal way that I loop over the data folder)
 NUM_PASSES=1
 
 # which loss function to use (logistic or hinge)
@@ -47,7 +47,7 @@ if [ "$INCREMENTAL" = true ] ; then
     echo $f >> "$NAME_SCHEME/accuracies.txt"
     # run vw training
     #echo "\n---training model---\n"
-    vw -d "$f" --passes $NUM_PASSES --loss_function $LOSS_FUNCTION --ngram $NGRAM -f "$NAME_SCHEME/log_model.vw" --binary --quiet
+    vw -d "$f" --loss_function $LOSS_FUNCTION --ngram $NGRAM -f "$NAME_SCHEME/log_model.vw" --binary --quiet
 
     # test model on training set
     #echo "\n---testing model on training set---\n"
