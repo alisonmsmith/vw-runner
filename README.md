@@ -11,6 +11,8 @@ train-and-test.sh converts congress data to vw format, trains a binary classific
 
 change params in the train-and-test.sh file to specify output directory, number of passes to take over the data, which loss function to use (logistic or hinge), ngrams, and how much of the training set to use.
 
+** note: the train-and-test.sh file uses python3, you might need to change this to python depending on your environment
+
 # congress data preprocessing
 
 the python scripts train-data-to-vw.py and test-data-to-vw.py remove speeches where the speaker is independent (I), speeches shorter than 100 characters, and all punctuation from the speeches.
