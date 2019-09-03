@@ -99,7 +99,7 @@ else
   echo "\n---computing accuracy on test set---\n"
   python3 check-accuracy.py "$NAME_SCHEME/log_test_pred.txt" "$NAME_SCHEME/test_labels.txt"
 
-  # get an interpretable model
+  # get an interpretable model (requires that a trained model have been generated and stored at "$NAME_SCHEME/log_model.vw")
   echo "\n--- generating interpretable model ---\n"
   vw -d "$NAME_SCHEME/train.vw" --passes $NUM_PASSES --loss_function $LOSS_FUNCTION --ngram $NGRAM -t -i "$NAME_SCHEME/log_model.vw" --invert_hash "$NAME_SCHEME/model.hash" --binary
 
