@@ -1,6 +1,9 @@
 import os
+import sys
 
-FEATURE_FILE = 'congress_data_model_tri_readable.vw'
+FEATURE_FILE = sys.argv[1]
+
+#FEATURE_FILE = 'congress_data_model_tri_readable.vw'
 
 data = []
 with open(FEATURE_FILE) as f:
@@ -13,4 +16,7 @@ with open(FEATURE_FILE) as f:
             data.append((absolute, val, weight))
 
 data.sort(key=lambda tup: tup[0])
-print(data)
+top = data[-20:len(data)]
+print('top 20 features:')
+for feature in top:
+    print(feature[1], feature[2])

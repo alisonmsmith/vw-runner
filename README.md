@@ -24,3 +24,6 @@ by setting $INCREMENTAL to true in train-and-test.sh, you can perform incrementa
 # randomizing the training input
 
 use the $RANDOMIZE variable in train-and-test.sh to specify whether or not to randomize the training input. vw runs online, so order is important. setting $RANDOMIZE to false, means vw will learn a consistent model each time, but this model might not be optimal.  
+
+# interpretability
+running --invert_hash produces a human-readable set of the word features (unigrams, bigrams, trigrams, etc.) and the score they contribute to the class. 

@@ -99,7 +99,10 @@ else
   echo "\n---computing accuracy on test set---\n"
   python3 check-accuracy.py "$NAME_SCHEME/log_test_pred.txt" "$NAME_SCHEME/test_labels.txt"
 
-  # TODO: get an interpretable model
+  # get an interpretable model
+  echo "\n--- generating interpretable model ---\n"
+  vw -d "$NAME_SCHEME/train.vw" --passes $NUM_PASSES --loss_function $LOSS_FUNCTION --ngram $NGRAM -t -i "$NAME_SCHEME/log_model.vw" --invert_hash "$NAME_SCHEME/model.hash" --binary
 
-  # TODO: print the top features for each class
+  # print the top features for each class
+  python3 vw-top-weighted-features.py "$NAME_SCHEME/model.hash"
 fi
