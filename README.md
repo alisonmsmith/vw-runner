@@ -1,5 +1,5 @@
 # vw-runner
-simple scripts to run vowpal wabbit and compute accuracy
+simple scripts to run vowpal wabbit locally and compute accuracy
 
 currently includes convote http://www.cs.cornell.edu/home/llee/data/convote.html dataset (debate speeches from 2005 congressional record)
 
